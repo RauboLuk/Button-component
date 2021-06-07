@@ -30,6 +30,16 @@ const useStyles = makeStyles({
       boxShadow: "none",
     }),
 
+    // disabled
+    ...(props.disabled && {
+      background: "#E0E0E0",
+      color: "#9E9E9E",
+    }),
+    ...(props.variant === "text" &&
+      props.disabled && {
+        background: "none",
+      }),
+
     "&:hover, &:focus": {
       background: "#AEAEAE",
       ...(props.variant === "outline" && {
@@ -38,15 +48,25 @@ const useStyles = makeStyles({
       ...(props.variant === "text" && {
         background: "rgba(41, 98, 255, 0.1)",
       }),
+
+      // disabled
+      ...(props.disabled && {
+        background: "#E0E0E0",
+        color: "#9E9E9E",
+      }),
+      ...(props.variant === "text" &&
+        props.disabled && {
+          background: "none",
+        }),
     },
   }),
 });
 
-const Button = ({ placeholder = "Default", disabled, ...props }) => {
+const Button = ({ placeholder = "Default", ...props }) => {
   console.log(props);
   const classes = useStyles(props);
   return (
-    <button className={classes.button} disabled>
+    <button className={classes.button} disabled={props.disabled}>
       {placeholder}
     </button>
   );

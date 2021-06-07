@@ -11,6 +11,8 @@ function App() {
         <Button variant="outline" />
         <Button variant="text" />
         <Button disableShadow />
+        <Button disabled />
+        <Button variant="text" disabled />
       </header>
     </div>
   );
