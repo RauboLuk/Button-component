@@ -29,8 +29,8 @@ const useStyles = makeStyles({
     ...(props.disableShadow && {
       boxShadow: "none",
     }),
-    
-    "&:hover, &:focus": (props) => ({
+
+    "&:hover, &:focus": {
       background: "#AEAEAE",
       ...(props.variant === "outline" && {
         background: "rgba(41, 98, 255, 0.1)",
@@ -38,14 +38,18 @@ const useStyles = makeStyles({
       ...(props.variant === "text" && {
         background: "rgba(41, 98, 255, 0.1)",
       }),
-    }),
+    },
   }),
 });
 
-const Button = ({ placeholder = "Default", ...props }) => {
+const Button = ({ placeholder = "Default", disabled, ...props }) => {
   console.log(props);
   const classes = useStyles(props);
-  return <button className={classes.button}>{placeholder}</button>;
+  return (
+    <button className={classes.button} disabled>
+      {placeholder}
+    </button>
+  );
 };
 
 export default Button;

@@ -10,6 +10,7 @@ function App() {
         <Button />
         <Button variant="outline" />
         <Button variant="text" />
+        <Button disableShadow />
       </header>
     </div>
   );
