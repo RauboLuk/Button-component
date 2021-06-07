@@ -8,6 +8,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Button />
+        <Button outline />
+        <Button variant="text" />
       </header>
     </div>
   );
