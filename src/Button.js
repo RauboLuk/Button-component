@@ -1,9 +1,16 @@
+import React, { Suspense } from "react";
 import "./Button.css";
 import { makeStyles } from "@material-ui/styles";
+import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles({
   button: (props) => ({
     outline: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "0.7rem",
     background: "#E0E0E0",
     border: 0,
     borderRadius: 6,
@@ -60,15 +67,30 @@ const useStyles = makeStyles({
         }),
     },
   }),
+  icon: () => ({
+    fontSize: 18,
+  }),
 });
 
-const Button = ({ placeholder = "Default", ...props }) => {
+const Button = ({ placeholder = "Default", startIcon, endIcon, ...props }) => {
   console.log(props);
   const classes = useStyles(props);
+
+  const renderStartIcon = startIcon && (
+    <Icon className={classes.icon}>{startIcon}</Icon>
+  );
+  const renderEndIcon = endIcon && (
+    <Icon className={classes.icon}>{endIcon}</Icon>
+  );
+
   return (
-    <button className={classes.button} disabled={props.disabled}>
-      {placeholder}
-    </button>
+    <Suspense fallback={<div>Loading...</div>}>
+      <button className={classes.button} disabled={props.disabled}>
+        {renderStartIcon}
+        {placeholder}
+        {renderEndIcon}
+      </button>
+    </Suspense>
   );
 };
 

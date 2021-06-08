@@ -13,6 +13,8 @@ function App() {
         <Button disableShadow />
         <Button disabled />
         <Button variant="text" disabled />
+        <Button startIcon="access_alarm" />
+        <Button endIcon="local_grocery_store" />
       </header>
     </div>
   );
