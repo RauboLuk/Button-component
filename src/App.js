@@ -15,6 +15,9 @@ function App() {
         <Button variant="text" disabled />
         <Button startIcon="access_alarm" />
         <Button endIcon="local_grocery_store" />
+        <Button size="sm" />
+        <Button size="md" />
+        <Button size="lg" />
       </header>
     </div>
   );

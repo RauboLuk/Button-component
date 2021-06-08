@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import "./Button.css";
 import { makeStyles } from "@material-ui/styles";
-import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles({
@@ -36,6 +35,12 @@ const useStyles = makeStyles({
     ...(props.disableShadow && {
       boxShadow: "none",
     }),
+    ...(props.size === "sm" && {
+      height: 32,
+    }),
+    ...(props.size === "lg" && {
+      height: 42,
+    }),
 
     // disabled
     ...(props.disabled && {
@@ -67,9 +72,7 @@ const useStyles = makeStyles({
         }),
     },
   }),
-  icon: () => ({
-    fontSize: 18,
-  }),
+  icon: { fontSize: 14 },
 });
 
 const Button = ({ placeholder = "Default", startIcon, endIcon, ...props }) => {
