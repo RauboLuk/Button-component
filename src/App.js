@@ -18,6 +18,10 @@ function App() {
         <Button size="sm" />
         <Button size="md" />
         <Button size="lg" />
+        <Button color="default" />
+        <Button color="primary" />
+        <Button color="secondary" />
+        <Button color="danger" />
       </header>
     </div>
   );

@@ -41,6 +41,21 @@ const useStyles = makeStyles({
     ...(props.size === "lg" && {
       height: 42,
     }),
+    ...(props.color === "primary" && {
+      color: "#FFFFFF",
+      background: "#2962FF",
+      boxShadow: "0px 2px 3px rgba(41, 98, 255, 0.2)",
+    }),
+    ...(props.color === "secondary" && {
+      color: "#FFFFFF",
+      background: "#455A64",
+      boxShadow: "0px 2px 3px rgba(69, 90, 100, 0.2)",
+    }),
+    ...(props.color === "danger" && {
+      color: "#FFFFFF",
+      background: "#D32F2F",
+      boxShadow: "0px 2px 3px rgba(211, 47, 47, 0.2)",
+    }),
 
     // disabled
     ...(props.disabled && {
@@ -59,6 +74,15 @@ const useStyles = makeStyles({
       }),
       ...(props.variant === "text" && {
         background: "rgba(41, 98, 255, 0.1)",
+      }),
+      ...(props.color === "primary" && {
+        background: "#0039CB",
+      }),
+      ...(props.color === "secondary" && {
+        background: "#1C313A",
+      }),
+      ...(props.color === "danger" && {
+        background: "#9A0007",
       }),
 
       // disabled
