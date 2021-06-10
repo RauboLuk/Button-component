@@ -3,18 +3,25 @@ import "./Button.css";
 import { makeStyles } from "@material-ui/styles";
 import Icon from "@material-ui/core/Icon";
 
+const _theme = {
+  default: {
+    text: "#3F3F3F",
+    background: "#E0E0E0",
+  },
+};
+
 const useStyles = makeStyles({
-  button: (props) => ({
+  button: ({ _theme, ...props }) => ({
     outline: 0,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     gap: "0.7rem",
-    background: "#E0E0E0",
+    background: _theme.default.background,
     border: 0,
     borderRadius: 6,
     boxShadow: "0px 2px 3px rgba(51, 51, 51, 0.2)",
-    color: "#3F3F3F",
+    color: _theme.default.text,
     fontFamily: "Noto Sans JP",
     fontWeight: 500,
     fontSize: 14,
@@ -101,7 +108,9 @@ const useStyles = makeStyles({
 
 const Button = ({ placeholder = "Default", startIcon, endIcon, ...props }) => {
   console.log(props);
-  const classes = useStyles(props);
+  const stylesProps = { ...props, _theme };
+  console.log(stylesProps);
+  const classes = useStyles(stylesProps);
 
   const renderStartIcon = startIcon && (
     <Icon className={classes.icon}>{startIcon}</Icon>
