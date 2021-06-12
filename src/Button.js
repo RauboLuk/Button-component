@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import hexRgb from "hex-rgb";
 import "./Button.css";
 import { makeStyles } from "@material-ui/styles";
 import Icon from "@material-ui/core/Icon";
@@ -7,8 +8,26 @@ const _theme = {
   default: {
     text: "#3F3F3F",
     background: "#E0E0E0",
+    focus: "#AEAEAE",
+  },
+  primary: {
+    text: "#FFFFFF",
+    background: "#2962FF",
+    focus: "#0039CB",
+  },
+  secondary: {
+    text: "#FFFFFF",
+    background: "#455A64",
+    focus: "#1C313A",
+  },
+  danger: {
+    text: "#FFFFFF",
+    background: "#D32F2F",
+    focus: "#9A0007",
   },
 };
+
+// hexRgb('#cd2222cc', {format: 'css', alpha: 0.2});
 
 const useStyles = makeStyles({
   button: ({ _theme, ...props }) => ({
@@ -17,11 +36,8 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     gap: "0.7rem",
-    background: _theme.default.background,
     border: 0,
     borderRadius: 6,
-    boxShadow: "0px 2px 3px rgba(51, 51, 51, 0.2)",
-    color: _theme.default.text,
     fontFamily: "Noto Sans JP",
     fontWeight: 500,
     fontSize: 14,
@@ -48,26 +64,45 @@ const useStyles = makeStyles({
     ...(props.size === "lg" && {
       height: 42,
     }),
+    // color default
+    ...{
+      color: _theme.default.text,
+      background: _theme.default.background,
+      boxShadow: `0px 2px 3px ${hexRgb(_theme.default.background, {
+        format: "css",
+        alpha: 0.2,
+      })}`,
+    },
     ...(props.color === "primary" && {
-      color: "#FFFFFF",
-      background: "#2962FF",
-      boxShadow: "0px 2px 3px rgba(41, 98, 255, 0.2)",
+      color: _theme.primary.text,
+      background: _theme.primary.background,
+      boxShadow: `0px 2px 3px ${hexRgb(_theme.primary.background, {
+        format: "css",
+        alpha: 0.2,
+      })}`,
     }),
     ...(props.color === "secondary" && {
-      color: "#FFFFFF",
-      background: "#455A64",
-      boxShadow: "0px 2px 3px rgba(69, 90, 100, 0.2)",
+      color: _theme.secondary.text,
+      background: _theme.secondary.background,
+      boxShadow: `0px 2px 3px ${hexRgb(_theme.secondary.background, {
+        format: "css",
+        alpha: 0.2,
+      })}`,
     }),
     ...(props.color === "danger" && {
-      color: "#FFFFFF",
-      background: "#D32F2F",
-      boxShadow: "0px 2px 3px rgba(211, 47, 47, 0.2)",
+      color: _theme.danger.text,
+      background: _theme.danger.background,
+      boxShadow: `0px 2px 3px ${hexRgb(_theme.danger.background, {
+        format: "css",
+        alpha: 0.2,
+      })}`,
     }),
 
     // disabled
     ...(props.disabled && {
       background: "#E0E0E0",
       color: "#9E9E9E",
+      boxShadow: 0
     }),
     ...(props.variant === "text" &&
       props.disabled && {
