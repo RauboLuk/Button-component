@@ -55,9 +55,6 @@ const useStyles = makeStyles({
       boxShadow: "none",
       color: "#3D5AFE",
     }),
-    ...(props.disableShadow && {
-      boxShadow: "none",
-    }),
     ...(props.size === "sm" && {
       height: 32,
     }),
@@ -102,12 +99,15 @@ const useStyles = makeStyles({
     ...(props.disabled && {
       background: "#E0E0E0",
       color: "#9E9E9E",
-      boxShadow: 0
+      boxShadow: "none",
     }),
     ...(props.variant === "text" &&
       props.disabled && {
         background: "none",
       }),
+    ...(props.disableShadow && {
+      boxShadow: "none",
+    }),
 
     "&:hover, &:focus": {
       background: "#AEAEAE",
