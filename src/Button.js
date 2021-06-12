@@ -4,6 +4,20 @@ import "./Button.css";
 import { makeStyles } from "@material-ui/styles";
 import Icon from "@material-ui/core/Icon";
 
+const getColor = (color) => {
+  switch (color) {
+    case "primary":
+      return _theme.primary;
+    case "secondary":
+      return _theme.secondary;
+    case "danger":
+      return _theme.danger;
+
+    default:
+      return _theme.default;
+  }
+};
+
 const _theme = {
   default: {
     text: "#3F3F3F",
@@ -27,10 +41,9 @@ const _theme = {
   },
 };
 
-// hexRgb('#cd2222cc', {format: 'css', alpha: 0.2});
-
 const useStyles = makeStyles({
   button: ({ _theme, ...props }) => ({
+    // BASE
     outline: 0,
     display: "flex",
     justifyContent: "center",
@@ -43,24 +56,14 @@ const useStyles = makeStyles({
     fontSize: 14,
     height: 36,
     padding: "0 16px",
-    ...(props.variant === "outline" && {
-      background: "none",
-      border: "1px solid #3D5AFE",
-      boxShadow: "none",
-      color: "#3D5AFE",
-    }),
-    ...(props.variant === "text" && {
-      background: "none",
-      border: 0,
-      boxShadow: "none",
-      color: "#3D5AFE",
-    }),
     ...(props.size === "sm" && {
       height: 32,
     }),
     ...(props.size === "lg" && {
       height: 42,
     }),
+
+    // COLORS
     // color default
     ...{
       color: _theme.default.text,
@@ -95,6 +98,20 @@ const useStyles = makeStyles({
       })}`,
     }),
 
+    // VARIANTS
+    ...(props.variant === "outline" && {
+      background: "none",
+      border: `1px solid ${getColor(props.color).background}`,
+      boxShadow: "none",
+      color: `${getColor(props.color).background}`,
+    }),
+    ...(props.variant === "text" && {
+      background: "none",
+      border: 0,
+      boxShadow: "none",
+      color: "#3D5AFE",
+    }),
+
     // disabled
     ...(props.disabled && {
       background: "#E0E0E0",
@@ -111,9 +128,6 @@ const useStyles = makeStyles({
 
     "&:hover, &:focus": {
       background: "#AEAEAE",
-      ...(props.variant === "outline" && {
-        background: "rgba(41, 98, 255, 0.1)",
-      }),
       ...(props.variant === "text" && {
         background: "rgba(41, 98, 255, 0.1)",
       }),
@@ -125,6 +139,12 @@ const useStyles = makeStyles({
       }),
       ...(props.color === "danger" && {
         background: "#9A0007",
+      }),
+      ...(props.variant === "outline" && {
+        background: `${hexRgb(getColor(props.color).background, {
+          format: "css",
+          alpha: 0.1,
+        })}`,
       }),
 
       // disabled
