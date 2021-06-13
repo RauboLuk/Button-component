@@ -55,6 +55,12 @@ const useStyles = makeStyles({
     fontWeight: 500,
     fontSize: 14,
     height: 36,
+    color: getColor(props.color).text,
+    background: getColor(props.color).background,
+    boxShadow: `0px 2px 3px ${hexRgb(getColor(props.color).background, {
+      format: "css",
+      alpha: 0.2,
+    })}`,
     padding: "0 16px",
     ...(props.size === "sm" && {
       height: 32,
@@ -63,58 +69,23 @@ const useStyles = makeStyles({
       height: 42,
     }),
 
-    // COLORS
-    // color default
-    ...{
-      color: _theme.default.text,
-      background: _theme.default.background,
-      boxShadow: `0px 2px 3px ${hexRgb(_theme.default.background, {
-        format: "css",
-        alpha: 0.2,
-      })}`,
-    },
-    ...(props.color === "primary" && {
-      color: _theme.primary.text,
-      background: _theme.primary.background,
-      boxShadow: `0px 2px 3px ${hexRgb(_theme.primary.background, {
-        format: "css",
-        alpha: 0.2,
-      })}`,
-    }),
-    ...(props.color === "secondary" && {
-      color: _theme.secondary.text,
-      background: _theme.secondary.background,
-      boxShadow: `0px 2px 3px ${hexRgb(_theme.secondary.background, {
-        format: "css",
-        alpha: 0.2,
-      })}`,
-    }),
-    ...(props.color === "danger" && {
-      color: _theme.danger.text,
-      background: _theme.danger.background,
-      boxShadow: `0px 2px 3px ${hexRgb(_theme.danger.background, {
-        format: "css",
-        alpha: 0.2,
-      })}`,
-    }),
-
     // VARIANTS
     ...(props.variant === "outline" && {
       background: "none",
       border: `1px solid ${getColor(props.color).background}`,
       boxShadow: "none",
-      color: `${getColor(props.color).background}`,
+      color: getColor(props.color).background,
     }),
     ...(props.variant === "text" && {
       background: "none",
       border: 0,
       boxShadow: "none",
-      color: "#3D5AFE",
+      color: getColor(props.color).background,
     }),
 
     // disabled
     ...(props.disabled && {
-      background: "#E0E0E0",
+      background: getColor(props.color).background,
       color: "#9E9E9E",
       boxShadow: "none",
     }),
@@ -127,20 +98,8 @@ const useStyles = makeStyles({
     }),
 
     "&:hover, &:focus": {
-      background: "#AEAEAE",
-      ...(props.variant === "text" && {
-        background: "rgba(41, 98, 255, 0.1)",
-      }),
-      ...(props.color === "primary" && {
-        background: "#0039CB",
-      }),
-      ...(props.color === "secondary" && {
-        background: "#1C313A",
-      }),
-      ...(props.color === "danger" && {
-        background: "#9A0007",
-      }),
-      ...(props.variant === "outline" && {
+      background: getColor(props.color).focus,
+      ...((props.variant === "outline" || props.variant === "text") && {
         background: `${hexRgb(getColor(props.color).background, {
           format: "css",
           alpha: 0.1,
