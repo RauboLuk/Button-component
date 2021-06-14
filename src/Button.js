@@ -121,9 +121,7 @@ const useStyles = makeStyles({
 });
 
 const Button = ({ placeholder = "Default", startIcon, endIcon, ...props }) => {
-  console.log(props);
   const stylesProps = { ...props, _theme };
-  console.log(stylesProps);
   const classes = useStyles(stylesProps);
 
   const renderStartIcon = startIcon && (
