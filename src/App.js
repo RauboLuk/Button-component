@@ -69,7 +69,7 @@ function App() {
           <Button color="danger" />
         </section>
         <section>
-          <p>{`<Button color="secondary" variant=”outline” />`}</p>
+          <p>{`<Button color="secondary" variant="outline" />`}</p>
           <Button color="secondary" variant="outline" />
         </section>
         <section>
@@ -79,6 +79,14 @@ function App() {
         <section>
           <p>{`<Button color="primary" variant="text" />`}</p>
           <Button color="primary" variant="text" />
+        </section>
+        <section>
+          <p>{`<Button color="secondary" startIcon="access_alarm" />`}</p>
+          <Button color="secondary" startIcon="access_alarm" />
+        </section>
+        <section>
+          <p>{`<Button size="lg" color="danger" />`}</p>
+          <Button size="lg" color="danger" />
         </section>
       </main>
     </div>
